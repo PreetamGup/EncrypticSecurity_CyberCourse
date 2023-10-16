@@ -1,0 +1,458 @@
+.home{
+    margin-top: 50px;
+}
+.headingHome{
+    /* width: 50vmax; */
+    text-align: center;
+}
+
+#para ul{
+   text-align: left;
+}
+
+#cyberImage{
+    width: 60vmin;
+    height: 45vmin;
+}
+
+.titleheading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10vmax;
+    text-align: center;
+}
+.titleheading> div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.courseHead{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.courseHead h1{
+    margin: 1.5vw;
+}
+
+.courseHead span{
+    margin: 0.5vmax;
+    padding: 0.5vmax 1.2vmax;
+    background-color: #0c0f35;
+    border-radius: 15px;
+}
+
+.courseHead span:hover{
+   border-bottom: 5px solid aqua;
+   cursor: pointer;
+}
+
+.topCourses{
+    background-color: #f4f3f124;
+    color: #f4e8e8;
+    
+}
+
+.courseCardInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5vw;
+    justify-content: center;
+}
+
+.courseCard{
+    position: relative;
+    /* background-image: url("../Images/courseImage/cyberSecurity2.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    width: 18vw;
+    height: 23vw;
+    margin: 30px 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.courseCard img{
+  width: inherit;
+   height: inherit;
+}
+
+.courseDetail{
+    position: absolute;
+    bottom: 0px;
+    padding: 5px 20px;
+    background-color: #0c0f3557;
+
+}
+.detailHide{
+    display: none;
+}
+.detailHide p{
+    margin:0 ;
+}
+
+
+.courseCard:hover .courseDetail{
+    background-color: #0c0f358d;
+    cursor: pointer;
+}
+
+.courseCard:hover .detailHide{
+    display: block;
+    
+}
+
+.hotCourse{
+    position: absolute;
+    top: 10px;
+    background-color: red;
+    padding-left: 10px;
+    padding-right:10px ;
+    border-radius: 5px;
+    
+    /* display: inline-block; */
+}
+
+.featured{
+    height: 30px;
+    position: absolute;
+    padding: 0 40px;
+    top:30px;
+    right: -35px;
+    transform: rotate(45deg);
+    background-color: green;
+}
+
+.courseBrochure{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.courseContent{
+    width: 25vw;
+    height: 42vw;
+    background-color: rgba(16, 20, 92, 0.878)
+}
+
+.courseContent{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+}
+
+.courseName{
+    position: relative;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.courseContentDetail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.courseContentDetail .coursePrice{
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+.courseContentDetail .RupeeSymbol{
+    vertical-align: super;;
+    font-size:2.5vw;
+}
+
+.courseFeature{
+    display: flex;
+    flex-direction: column;
+}
+
+.courseFeature .Feature{
+    border-bottom: 1px solid rgb(83, 79, 79);
+    font-size: 1.2vw;
+    
+}
+
+.courseFeature button{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+    color: white;
+}
+
+.tagHotPopular{
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    top: 18px;
+    right: -30px;
+    background-color: black;
+    padding:2px 20px;
+    width: 120px;
+    transform: rotate(45deg);
+}
+
+.courseForm{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  
+
+}
+.courseForm img{
+    width: 55vw;
+    height: 55vw;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer label{
+    font-size: 1.5vw;
+}
+
+.formContainer input, select{
+    width: 20vw;
+}
+
+.formContainer button{
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+
+.formContainer button:hover{
+    background-color: rgb(22, 63, 187);
+    border: 2px solid black;
+    cursor:pointer;
+}
+
+.achievements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:130px 0;
+    
+}
+
+.achievements>div{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.achievements>div div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 40px;
+}
+
+.achievements>div div i{
+    font-size: 5vw;
+}
+
+.achievements>div div .icon{
+    font-size: 6vw;
+    margin: 10px;
+}
+
+.achievements>div div .aRecord{
+    font-size: 3vw;
+    font-weight: bold;
+    color: orange;
+}
+
+.studentReview{
+    /* width: 70%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.StudentInfo{
+    width: 30%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-left: 100px; */
+}
+.studentPhoto{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.studentComment{
+    width: 50%;
+}
+
+
+.carousel-item.active{
+    border: none !important;
+}
+
+.marquee{
+    background-color: whitesmoke;   
+    display: flex;
+    gap: 3vmax;
+    align-items: center;
+}
+.marquee img{
+    padding: 1vmax 0;
+}
+
+.initial-child-container{
+    display: flex;
+    gap: 3vmax;
+    align-items: center;
+}
+
+
+
+
+@media screen and (max-width:768px){
+    .titleheading{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .courseBrochure{
+        flex-direction: column;
+    }
+    .courseContent{
+        width: 50vw;
+        height: 65vw;
+    }
+
+    .courseCard{
+        width: 35vmax;
+        height: 45vmax;
+    }
+    .mainheading{
+        font-size: 8vw;
+    }
+    .achievements{
+        text-align: center;
+        margin: 50px 0;
+    }
+
+    .achievements>div{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        line-height: 0.8;
+    }
+
+    .achievements>div div .icon{
+        font-size: 8vh;
+        margin: 0px;
+      
+    }
+
+    .achievements>div div i{
+        font-size: 8vh;
+        margin-top: 30px;
+    }
+
+    .achievements>div div .aRecord{
+        font-size: 5vh;
+    
+    }
+
+    .courseForm{
+        flex-direction: column;
+    }
+
+    .courseForm img{
+        width: 50vmax;
+        height: 50vmax;
+    }
+
+    .formContainer label{
+        font-size: 2vmax;
+    }
+
+    .formContainer input, select{
+        width: 30vmax;
+    }
+}
+
+
+/* Mobile screen */
+
+@media screen and (max-width:426px) {
+    .courseContent{
+        width: 40vmax;
+        height: 70vmax;
+    }
+
+    .courseFeature .Feature{
+        border-bottom: 1px solid rgb(83, 79, 79);
+        font-size: 1.2vw;
+        
+    }
+
+    .courseFeature .Feature{
+        font-size: 2vmax;
+        
+    }
+
+    .courseContentDetail .coursePrice{
+        font-size: 4vmax;
+        font-weight: bold;
+    }
+
+    .courseContentDetail .RupeeSymbol {
+        vertical-align: super;
+        font-size: 2vmax;
+    }
+
+    .studentReview{
+        flex-direction: column;
+    }
+
+    .StudentInfo{
+        width: 100%;
+    }
+
+    .studentPhoto{
+        width: 100px;
+        height: 100px;
+    }
+
+    .studentComment{
+        text-align: center;
+        width: 70%;
+    }
+
+    /* .courseDetail h6{
+        font-size: 1.2vmax;
+    }
+
+    .courseDetail h5{
+        font-size: 1.8vmax;
+    }
+
+    .courseDetail p{
+        font-size: 1vmax;
+    } */
+}

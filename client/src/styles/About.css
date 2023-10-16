@@ -1,0 +1,49 @@
+.about{
+    padding: 0 50px;
+}
+
+.about>div{
+    padding: 0;
+    
+    
+}
+
+.aboutDetails{
+    /* width: 50%; */
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.aboutDetails>div{
+    width: 50%;
+}
+
+
+
+.aboutDetails span{
+    color: rgb(239, 173, 74);
+    font-size: 1rem;
+}
+
+.aboutImage img{
+    width: 50vw;
+    height: 60vw;
+
+}
+
+@media screen and (max-width:768px){
+    .aboutDetails>div{
+        width: 100%;
+    }
+    .aboutDetails{
+        display: flex;
+        flex-direction: column;
+    }  
+
+    .aboutImage img{
+        width: 100vw;
+        height: 90vw;
+    
+    }
+}

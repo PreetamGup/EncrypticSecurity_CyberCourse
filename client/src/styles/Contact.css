@@ -1,0 +1,120 @@
+.contactUS{
+    width: 100%;
+    margin-top: 50px;
+}
+
+.thaneContact i{
+    font-size: 2vw;
+    margin-right: 10px;
+}
+
+.contactInfo{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.contactLocation> div{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    /* background-color: black; */
+}
+
+.locationMap{
+    width: 50% !important;
+    
+}
+
+.thaneContact{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 3vw;
+}
+
+.thaneContact>div{
+    width: 50%;
+    
+}
+
+.contactFeedback form{
+    margin-top: 25px;
+    width: 45vw;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.contactFeedback form input{
+    width: 20vw;
+    height: 40px;
+    padding-left:20px;
+}
+.contactFeedback form button{
+    width: 70px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.contactFeedback form button:hover{
+    background-color: blue;
+    color: whitesmoke;
+ 
+}
+
+.fnameEmail{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contactFeedback form textarea{
+    padding: 5px;
+}
+
+@media screen and (max-width:768px) {
+    .thaneContact{
+        display: flex;
+        flex-direction: column;
+    }
+    .thaneContact>div{
+        width: 100%;
+    }
+    .locationMap{
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width:426px) {
+    .locationMap iframe{
+       width: 100%;
+    }
+
+    .thaneContact i{
+        font-size: 4vw;
+        margin-right: 10px;
+    }
+
+    .thaneContact h5{
+        font-size: 4vw;
+    }
+
+    .thaneContact p{
+        font-size: 3vw;
+    }
+
+    .contactFeedback form{
+        width: 40vmax;
+    }
+
+
+    .contactFeedback form input{
+        width: 18vmax;
+    }
+
+    .fnameEmail{
+        margin-top: 0px;
+    }
+}

@@ -1,0 +1,67 @@
+
+.footer{
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.Fabout{
+    width: 20vw;
+    font-size: 0.9vw;
+}
+
+.footer h4{
+    margin-bottom: 20px;
+    border-bottom: 1px solid whitesmoke;
+}
+.fpages{
+    width: 20vw;
+    
+}
+
+.fpages p{
+    font-size: 0.9vw;
+}
+
+.fpages span{
+    color: orange;
+}
+
+.fcontact p i{
+    padding-right: 20px;
+}
+
+.fsocialMedia{
+    width: 18vw;
+}
+
+.fsocialMedia i{
+    padding-right: 20px;
+    font-size: 1.5vw;
+}
+
+@media screen and (max-width:768px) {
+    .footer{
+        display: flex;
+        flex-direction: column;
+    }
+    .Fabout, .fpages, .fsocialMedia{
+        width: 100%;
+        font-size:2vh;
+    }
+
+    .fpages p{
+        font-size: 2.5vh;
+    }
+
+    .fsocialMedia i{
+        font-size: 3vh;
+    }
+
+    .footer{
+        padding: 20px;
+        gap: 40px;
+    }
+}

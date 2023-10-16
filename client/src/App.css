@@ -1,0 +1,23 @@
+.App{
+  /* background-color: #0c0f35; */
+  background-image: radial-gradient(circle closest-corner at 50% 10%, #3b4188, #0c0f35);
+  width: 100%;
+  height: 100%;
+  color: rgb(243, 232, 232);
+}
+.layoutContainer{
+  /* margin-left: 10px;
+  margin-right: 10px; */
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pdRL{
+  padding-left: 20px;
+  padding-right:20px ;
+}

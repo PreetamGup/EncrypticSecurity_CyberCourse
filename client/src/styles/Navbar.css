@@ -1,0 +1,131 @@
+.navigationDiv{
+    font-size:1.4vmax ;
+}
+
+.navigationDiv li a{
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 3px;
+    border-radius: 5px;
+  
+}
+
+.navmenu{
+    display: none;
+}
+
+.navmenu .navMenuDiv{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    height: 100vh;
+    width: 50vw;
+}
+.navmenu .navMenuDivNotActive{
+    display: none;
+}
+
+.navmenu .homeLink{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .homeLink i{
+    color: black;
+    padding-right: 2vw;
+    font-weight: bold;
+}
+
+.navMenuDiv a{
+    font-size: 5vw;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar{
+    gap: 8.5vmax;
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+}
+
+.scrollEffectNav{
+    background-color: #262b63;
+    box-shadow: rgba(15, 15, 15, 0.05) 0px 10px;
+}
+
+.active{
+    border-bottom: 5px solid #36b5c0;
+}
+
+.ulCategory ul{
+    list-style: none;
+}
+
+.dropdown button{
+    background-color: inherit;
+    border: none;
+    color: inherit;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 0.5vmax;
+    
+}
+
+
+
+.dropdown-content a{
+    color: black !important;
+    font-size: 1.2vmax;
+}
+
+.dropdown-content a:hover{
+    color: rgb(232, 20, 20) !important;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+    
+}
+
+@media screen and (max-width:768px){
+    .navigationDiv{
+        display: none;
+        
+    }
+    .navmenu{
+        display: inline-block;
+    }
+
+    .navbar{
+       display: flex !important;
+       justify-content: space-between !important;
+    }
+
+    .navmenu i{
+        font-size:30px;
+    }
+
+    .logodiv img{
+        width: 200px !important;
+        height: 60px;
+       
+    }
+    
+}
+
+@media screen and (max-width:426px) {
+    .logodiv img{
+        height: 40px;
+       
+    }
+}
