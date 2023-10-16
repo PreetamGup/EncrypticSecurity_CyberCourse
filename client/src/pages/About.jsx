@@ -55,7 +55,7 @@ const About = () => {
             </div>
 
             <div className='aboutImage mt-3'>
-                <img src="https://media.licdn.com/dms/image/C4D22AQG7rFQLeiks4A/feedshare-shrink_800/0/1675856659235?e=1700092800&v=beta&t=DRcbgbSI2K5hjgEErzgD_7NPaePphY8NyyIguLJh_M0" alt="About" />
+                <img src={require("../Images/Students/aboutPage.jpeg")} alt="About" />
             </div>
             
         </div>
