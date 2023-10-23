@@ -7,7 +7,7 @@ const Navbar = () => {
     const[closeMenu, setCloseMenu]= useState(false);
 
     function handleScroll(){
-        console.log(window.screenY)
+        
         if(window.scrollY>50){
             setColorChange(true)
         }else{
@@ -19,8 +19,8 @@ const Navbar = () => {
 
   return (
     <div className={`navbar d-flex flex-row justify-content-start pt-2 pdRL ${colorChange?"scrollEffectNav": ""}`}>
-       <div className="logodiv w-25">
-            <img src= {require('../Images/ESlogoPNG.png')} alt="logo" className='w-75'  />
+       <div className="logodiv w-25 ">
+            <img src= {require('../Images/ESNewLogo.png')} alt="logo"   />
        </div>
         
         <div className="navigationDiv ">
@@ -31,13 +31,13 @@ const Navbar = () => {
                 <li className='p-2 '>
                     <div className="dropdown">
                         <button><NavLink to='course'>Courses</NavLink></button>
-                        <div className="dropdown-content">
+                        {/* <div className="dropdown-content">
                             <Link to={"course"}>Hacking</Link><br />
                             <Link to={"course"}>Cyber Security</Link>
-                        </div>
+                        </div> */}
                     </div>
                 </li>
-                <li className='p-2'><NavLink to='membership'>Membership</NavLink></li>
+                <li className='p-2'><NavLink to='ourteam'>Our Team</NavLink></li>
                 <li className='p-2'><NavLink to='about'>About Us</NavLink></li>
                 <li className='p-2'><NavLink to='contact'>Contact Us</NavLink></li>
             </ul>
@@ -54,13 +54,13 @@ const Navbar = () => {
                     <li className='p-2 '>
                         <div className="dropdown">
                             <button><NavLink to='course'>Courses</NavLink></button>
-                            <div className="dropdown-content">
+                            {/* <div className="dropdown-content">
                                 <Link to={"course"}>Hacking</Link><br />
                                 <Link to={"course"}>Cyber Security</Link>
-                            </div>
+                            </div> */}
                         </div>
                     </li>
-                    <li className='p-2'><NavLink to='membership'>Membership</NavLink></li>
+                    <li className='p-2'><NavLink to='ourteam'>Our Team</NavLink></li>
                     <li className='p-2'><NavLink to='about'>About Us</NavLink></li>
                     <li className='p-2'><NavLink to='contact'>Contact Us</NavLink></li>
                 </ul>

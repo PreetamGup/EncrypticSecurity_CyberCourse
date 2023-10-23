@@ -402,7 +402,8 @@
 @media screen and (max-width:426px) {
     .courseContent{
         width: 40vmax;
-        height: 70vmax;
+        height: fit-content;
+        padding-bottom: 10px;
     }
 
     .courseFeature .Feature{

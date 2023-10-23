@@ -3,7 +3,7 @@ import React from 'react'
 const Membership = () => {
   return (
     <div className='container'>
-        <h2>Membership</h2>
+        <h2>Our Team</h2>
     </div>
   )
 }

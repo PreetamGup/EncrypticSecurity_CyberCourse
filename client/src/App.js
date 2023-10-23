@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Course from './pages/Course';
 import Contact from './pages/Contact';
 import About from './pages/About';
-import Membership from './pages/Membership';
+import OurTeam from './pages/OurTeam';
 
 
 
@@ -22,7 +22,7 @@ function App() {
             <Route path='/course' element={<Course/>}></Route>
             <Route path='/contact' element={<Contact/>}></Route>
             <Route path='/about' element={<About/>}></Route>
-            <Route path='/membership' element={<Membership/>}></Route>
+            <Route path='/ourteam' element={<OurTeam/>}></Route>
 
           </Route>
         </Routes>
