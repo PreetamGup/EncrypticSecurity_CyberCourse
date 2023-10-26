@@ -37,6 +37,7 @@ const Footer = () => {
         <Link to={'https://www.instagram.com/encrypticsecurity/'} target="_blank"><i className="bi bi-instagram"></i></Link>
         <Link to={'https://www.linkedin.com/company/encryptic-security-pvt-ltd/'} target='_blank'><i className="bi bi-linkedin"></i></Link>        
         <Link to={'https://www.facebook.com/encsec'} target="_blank"><i className="bi bi-facebook"></i></Link>
+        <Link to={'https://www.youtube.com/@Encrypticsecurityindia'} target="_blank"><i className="bi bi-youtube"></i></Link>
         <i className="bi bi-twitter"></i>
       </div>
     </div>

@@ -229,6 +229,7 @@
 
 .formContainer input, select{
     width: 20vw;
+    padding: 2px 5px;
 }
 
 .formContainer button{

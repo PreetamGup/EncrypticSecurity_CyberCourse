@@ -42,7 +42,10 @@ const Navbar = () => {
                 <li className='p-2'><NavLink to='contact'>Contact Us</NavLink></li>
             </ul>
         </div>
-
+        
+        <div className='loginMenu'>
+            <button>Login</button>
+        </div>
         <div className='navmenu'>
             <i className="bi bi-list" onClick={(e)=>setCloseMenu(!closeMenu)}/>
             <div className= {closeMenu?'navMenuDiv':"navMenuDivNotActive"}>
@@ -63,6 +66,7 @@ const Navbar = () => {
                     <li className='p-2'><NavLink to='ourteam'>Our Team</NavLink></li>
                     <li className='p-2'><NavLink to='about'>About Us</NavLink></li>
                     <li className='p-2'><NavLink to='contact'>Contact Us</NavLink></li>
+                    <li className='p-2'><NavLink to='login'>Login</NavLink></li>
                 </ul>
             </div>
         </div>

@@ -49,8 +49,9 @@
 .contactFeedback form input{
     width: 20vw;
     height: 40px;
-    padding-left:20px;
+    padding: 5px 15px;
 }
+
 .contactFeedback form button{
     width: 70px;
     padding: 5px;

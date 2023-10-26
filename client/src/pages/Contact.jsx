@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import '../styles/Contact.css'
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Contact = () => {
@@ -7,15 +10,46 @@ const Contact = () => {
   const[name,setName]= useState("");
   const[email, setEmail]= useState("");
   const[message, setMessage]= useState("")
+  
 
-  const handleSubmit=(e)=>{
+
+  const handleSubmit=async(e)=>{
     e.preventDefault();
 
-    console.log(name, email, message)
+    const formData= {
+      formName:"FeedbackForm",
+      name,
+      email,
+      feedback:message,
+    }
 
-    setName("");
-    setMessage("");
-    setEmail("");
+    try {
+      const response = await axios.post("http://localhost:8080/api/v1/feedbackform", formData);
+      
+      if(response.data.success){
+        setName("");
+        setMessage("");
+        setEmail("");
+        
+      toast.success(` ${response.data.message}`, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
+
+      }else{
+        console.warn(response.data.message);
+      }
+      
+    } catch (error) {
+      console.warn(error);
+    }
+
   }
 
   return (
@@ -201,6 +235,8 @@ const Contact = () => {
             <button >Submit</button>
         </form>
       </div>
+
+      <ToastContainer />
     </div>
   )
 }

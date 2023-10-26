@@ -5,24 +5,48 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import {FaRegHandshake} from "react-icons/fa"
+import axios from 'axios';
 
 const Home = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedBranch, setSelectedBranch] = useState("");
+  const [formMessage, setformMessage] = useState(null);
+
 
   const branches = ["Thane", "Andheri", "Ghatkopar"];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     // Perform any data processing or submission here
-    console.log("Form submitted:", {
+    const formData= {
+      formName:"ApplyForm",
       firstName,
       lastName,
       phoneNumber,
-      selectedBranch,
-    });
+      branch:selectedBranch
+    }
+
+    try {
+      const response= await axios.post('http://localhost:8080/api/v1/applyform', formData);
+
+      if(response.data.success){
+        setSelectedBranch("");
+        setFirstName("");
+        setLastName("");
+        setPhoneNumber("");
+        setformMessage(response.data.message);
+
+      }else{
+        setformMessage(response.data.message);
+      }
+      
+
+    } catch (error) {
+      console.warn(error);
+    }
+
   };
 
   useEffect(() => {
@@ -445,7 +469,7 @@ const Home = () => {
           src="https://encrypticsecurity.com/wp-content/uploads/2023/09/photoeffecthexacollagemockup5fp-1024x712.jpg"
           alt="encryptic Security"
         />
-      
+
 
         <form onSubmit={handleSubmit} className="mt-3 formContainer">
           <h3 className="text-center">
@@ -502,6 +526,14 @@ const Home = () => {
                 ))}
               </select>
             </div>
+                 
+                  {
+                    formMessage &&<>  <br /><div style={{color:"red"}}>
+                      
+                      {formMessage}
+                    </div></>
+                  }
+
             <br />
             <button type="submit">Submit</button>
           </div>
