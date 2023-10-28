@@ -1,10 +1,12 @@
 import '../styles/Navbar.css'
 import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
     const[colorChange, setColorChange]=useState(false);
     const[closeMenu, setCloseMenu]= useState(false);
+    const navigate= useNavigate();
 
     function handleScroll(){
         
@@ -44,7 +46,7 @@ const Navbar = () => {
         </div>
         
         <div className='loginMenu'>
-            <button>Login</button>
+            <button onClick={()=>navigate("/login")}>Login</button>
         </div>
         <div className='navmenu'>
             <i className="bi bi-list" onClick={(e)=>setCloseMenu(!closeMenu)}/>

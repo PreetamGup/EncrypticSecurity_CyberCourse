@@ -9,6 +9,7 @@ import Course from './pages/Course';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import OurTeam from './pages/OurTeam';
+import Login from './pages/Login';
 
 
 
@@ -25,6 +26,7 @@ function App() {
             <Route path='/ourteam' element={<OurTeam/>}></Route>
 
           </Route>
+          <Route path='/login' element={<Login/>}></Route>
         </Routes>
       </BrowserRouter>
      
