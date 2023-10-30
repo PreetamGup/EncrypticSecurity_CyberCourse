@@ -51,3 +51,23 @@ export const applyFormController =async(req, res)=>{
     }
     
 }
+
+export const applyFormData =async(req,res)=>{
+
+    try {
+        const formData = await FormModel.aggregate([{$match:{formName:"ApplyForm"}}]);
+        res.send(formData);
+    } catch (error) {
+        res.send(error)
+    }
+}
+
+
+export const feedbackformData =async(req,res)=>{
+    try {
+        const formData = await FormModel.aggregate([{$match:{formName:"FeedbackForm"}}]);
+        res.send(formData);
+    } catch (error) {
+        res.send(error)
+    }
+}

@@ -1,0 +1,27 @@
+.FeedbackForm{
+    text-align: center;
+    font-family: cursive;
+    height: 89vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+
+.FeedbackForm table, tr, td, th{
+    border: 2px solid gray;
+}
+
+.FeedbackForm table{
+    width: 95%;
+    background-color: rgba(255, 255, 255, 0.058); 
+    flex:1 1 auto;
+    margin-bottom: 10px;
+
+}
+
+.FeedbackForm table thead{
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.536);
+}

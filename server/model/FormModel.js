@@ -10,10 +10,14 @@ const FormSchema= mongoose.Schema({
     phoneNumber:String,
     email:String,
     name:String,
+    isRead:{
+        type:Boolean,
+        default:false,
+    },
     branch:{
         type:String,
         enum:["Thane", "Andheri", "Ghatkopar"],
-        default:"Thane"
+       
     },
     feedback:String
 })

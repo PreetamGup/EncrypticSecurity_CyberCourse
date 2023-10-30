@@ -10,6 +10,9 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import OurTeam from './pages/OurTeam';
 import Login from './pages/Login';
+import Layout2 from './components/Layout2';
+import DashBoard from './pages/Layout2/DashBoard';
+import FeedbackForm from './pages/Layout2/FeedbackForm'
 
 
 
@@ -20,12 +23,19 @@ function App() {
         <Routes>
           <Route path='/' element={<Layout/>}>
             <Route index path='/' element={<Home/>}></Route>
-            <Route path='/course' element={<Course/>}></Route>
-            <Route path='/contact' element={<Contact/>}></Route>
-            <Route path='/about' element={<About/>}></Route>
-            <Route path='/ourteam' element={<OurTeam/>}></Route>
+            <Route path='course' element={<Course/>}></Route>
+            <Route path='contact' element={<Contact/>}></Route>
+            <Route path='about' element={<About/>}></Route>
+            <Route path='ourteam' element={<OurTeam/>}></Route>
+          </Route>
+
+          <Route path='dashboard' element={<Layout2/>}>
+            <Route index path='home' element={<DashBoard/>}></Route>
+            <Route  path='feedbackform' element={<FeedbackForm/>}></Route>
+            <Route  path='appliedform' element={<DashBoard/>}></Route>
 
           </Route>
+
           <Route path='/login' element={<Login/>}></Route>
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,6 @@
 import '../styles/Navbar.css'
 import React, { useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
 
   return (
-    <div className={`navbar d-flex flex-row justify-content-start pt-2 pdRL ${colorChange?"scrollEffectNav": ""}`}>
+    <nav className={`navbar d-flex flex-row justify-content-start pt-2 pdRL ${colorChange?"scrollEffectNav": ""}`}>
        <div className="logodiv w-25 ">
             <img src= {require('../Images/ESNewLogo.png')} alt="logo"   />
        </div>
@@ -39,7 +39,7 @@ const Navbar = () => {
                         </div> */}
                     </div>
                 </li>
-                <li className='p-2'><NavLink to='ourteam'>Our Team</NavLink></li>
+                <li className='p-2'><NavLink to='ourteam' >Our Team</NavLink></li>
                 <li className='p-2'><NavLink to='about'>About Us</NavLink></li>
                 <li className='p-2'><NavLink to='contact'>Contact Us</NavLink></li>
             </ul>
@@ -73,9 +73,7 @@ const Navbar = () => {
             </div>
         </div>
 
-        
-
-    </div>
+    </nav>
   )
 }
 
