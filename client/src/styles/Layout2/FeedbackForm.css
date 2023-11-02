@@ -1,11 +1,12 @@
 .FeedbackForm{
     text-align: center;
     font-family: cursive;
-    height: 89vh;
+    /* height: 89vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    width: 85%;
 }
 
 
@@ -16,7 +17,7 @@
 .FeedbackForm table{
     width: 95%;
     background-color: rgba(255, 255, 255, 0.058); 
-    flex:1 1 auto;
+    /* flex:1 1 auto; */
     margin-bottom: 10px;
 
 }
@@ -24,4 +25,9 @@
 .FeedbackForm table thead{
     font-size: 1.2rem;
     background-color: rgba(255, 255, 255, 0.536);
+}
+
+.FeedbackForm table tbody input{
+    width: 18px;
+    height: 18px;
 }

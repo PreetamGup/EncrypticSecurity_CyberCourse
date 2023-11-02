@@ -1,9 +1,9 @@
 .asideBar{
-    position: fixed ;
+    position: sticky ;
     top: 85px;
     left: 10px;
     width:15%;
-    height: 87.5vh;
+    height: 89vh;
     background-color: rgba(255, 255, 255, 0.058); 
     border-radius: 10px;
     

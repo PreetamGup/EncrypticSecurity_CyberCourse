@@ -1,0 +1,100 @@
+.BlogPage{
+ 
+    font-family: cursive;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:85%;
+}
+.BlogContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 5px 40px;
+}
+
+
+
+.BlogContainer button{
+  position: relative;
+  right: -500px;
+    padding: 1px 10px;
+}
+
+.BlogPage button{
+    padding: 1px 10px;
+}
+
+
+.editForm{
+    margin-top: 10px;
+   
+}
+
+.editForm > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.editForm  .divInput{
+    display: flex;
+    flex-direction: column;
+}
+
+.editForm  .divInput textarea{
+    padding: 5px;
+}
+
+.editForm >div label> span{
+    font-size: 2.5vh;
+}
+
+.BlogForm{
+    width: 95%;
+}
+
+.BlogForm form input{
+    border: 1px solid black;
+    
+}
+
+.BlogForm form input:focus{
+    outline:none;
+}
+
+.BlogForm form #blogTitle{
+    margin: 3px 5px;
+    width: 45vw;
+    height:4vh ;
+    padding: 1px 5px;
+}
+
+.rdw-editor-main{
+    height: 75vh !important;
+    background-color: white;
+    padding: 2px 4px;
+    color: black;
+    margin-bottom: 10px;
+    /* width: 100%; */
+}
+
+.toolbar-class{
+    color:black
+}
+
+.rdw-option-active{
+    border: 2px solid black !important;
+}
+
+
+
+/* Showing all blog  */
+
+.blogDiv{
+    border: 1px solid black;
+    padding: 10px ;
+    margin:20px 0px ;
+    width:80%;
+}

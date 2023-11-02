@@ -55,7 +55,7 @@ export const applyFormController =async(req, res)=>{
 export const applyFormData =async(req,res)=>{
 
     try {
-        const formData = await FormModel.aggregate([{$match:{formName:"ApplyForm"}}]);
+        const formData = await FormModel.aggregate([{$match:{formName:"ApplyForm"}}, {$sort: {createdAt: -1}}]);
         res.send(formData);
     } catch (error) {
         res.send(error)
@@ -65,8 +65,25 @@ export const applyFormData =async(req,res)=>{
 
 export const feedbackformData =async(req,res)=>{
     try {
-        const formData = await FormModel.aggregate([{$match:{formName:"FeedbackForm"}}]);
+        const formData = await FormModel.aggregate([{$match:{formName:"FeedbackForm"}}, {$sort: {createdAt: -1}}]);
         res.send(formData);
+    } catch (error) {
+        res.send(error)
+    }
+}
+
+
+
+export const updateFormData = async(req, res)=>{
+    
+    try {
+        const {id}=req.params;
+        const {isRead}= req.query;
+
+        await FormModel.updateOne({_id:id},{isRead})
+        
+        res.status(200).send("Update successfully");
+
     } catch (error) {
         res.send(error)
     }

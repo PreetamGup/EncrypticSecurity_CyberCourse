@@ -29,7 +29,7 @@ const Home = () => {
     }
 
     try {
-      const response= await axios.post('http://localhost:8080/api/v1/applyform', formData);
+      const response= await axios.post(process.env.REACT_APP_API_V1+'/applyform', formData);
 
       if(response.data.success){
         setSelectedBranch("");

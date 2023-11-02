@@ -1,10 +1,36 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
 import "../../styles/Layout2/FeedbackForm.css"
+import axios from 'axios'
+
 
 const FeedbackForm = () => {
-  return (
-    <div className='FeedbackForm' style={{position:"relative", top:"0px", left:"100px",marginLeft:"150px" , width:"82%" }}>
-        <h2>Feedback Forms</h2>
+
+  const [formData, setFormData]= useState([]);
+
+  const fetchForm=async()=>{
+    
+    try {
+      const allform = await axios.get(process.env.REACT_APP_API_V1+'/feedbackform');
+      console.log(allform.data)
+      setFormData(allform.data);
+
+    } catch (error) {
+      console.warn(error)
+    }
+    
+  }
+
+  useEffect(() => {
+    
+    fetchForm()
+
+  },[])
+  
+  
+  
+   return (
+    <div className='FeedbackForm' style={{}}>
+        <h3>Feedback Forms</h3>
         <table>
           <thead>
             <tr>
@@ -14,65 +40,15 @@ const FeedbackForm = () => {
             </tr>
           </thead>
           <tbody>
-            <tr >
-              <td>Rohit Mishra</td>
-              <td>rohitmishra@gmail.com</td>
-              <td>Helldkjfhskjfshdfkjsdfhk dlfsldfjlkdjflkjfldslk dlfj ldfjlsfkj ljlkdsfjl uerhiuwhk dfjkjdkfhkhgiskj gfknskghisjggfkdfgbuhgiuhgho</td>
-            </tr>
-
-            <tr>
-              <td>Rohit Mohanlal Mishra dsfhfkjskdhiu</td>
-              <td>rohitlalmishra@gmail.com</td>
-              <td>Helldkjfhskjfshdfkjsdfhk dlfsldfjlkdjflkjfldslk dlfj ldfjlsfkj ljlkdsfjl uerhiuwhk dfjkjdkfhkhgiskj 
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit nihil rerum expedita exercitationem. Pariatur nobis architecto fugit provident. Quod architecto omnis sapiente molestias iure quos eius voluptates beatae nihil.
-                lore
-              </td>
-            </tr>
-
-            <tr >
-              <td>Rohit Mishra</td>
-              <td>rohitmishra@gmail.com</td>
-              <td>Helldkjfhskjfshdfkjsdfhk dlfsldfjlkdjflkjfldslk dlfj ldfjlsfkj ljlkdsfjl uerhiuwhk dfjkjdkfhkhgiskj gfknskghisjggfkdfgbuhgiuhgho</td>
-            </tr>
-
-            <tr>
-              <td>Rohit Mohanlal Mishra dsfhfkjskdhiu</td>
-              <td>rohitlalmishra@gmail.com</td>
-              <td>Helldkjfhskjfshdfkjsdfhk dlfsldfjlkdjflkjfldslk dlfj ldfjlsfkj ljlkdsfjl uerhiuwhk dfjkjdkfhkhgiskj 
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit nihil rerum expedita exercitationem. Pariatur nobis architecto fugit provident. Quod architecto omnis sapiente molestias iure quos eius voluptates beatae nihil.
-                lore
-              </td>
-            </tr>
-
-            <tr >
-              <td>Rohit Mishra</td>
-              <td>rohitmishra@gmail.com</td>
-              <td>Helldkjfhskjfshdfkjsdfhk dlfsldfjlkdjflkjfldslk dlfj ldfjlsfkj ljlkdsfjl uerhiuwhk dfjkjdkfhkhgiskj gfknskghisjggfkdfgbuhgiuhgho</td>
-            </tr>
-
-            <tr>
-              <td>Rohit Mohanlal Mishra dsfhfkjskdhiu</td>
-              <td>rohitlalmishra@gmail.com</td>
-              <td>Helldkjfhskjfshdfkjsdfhk dlfsldfjlkdjflkjfldslk dlfj ldfjlsfkj ljlkdsfjl uerhiuwhk dfjkjdkfhkhgiskj 
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit nihil rerum expedita exercitationem. Pariatur nobis architecto fugit provident. Quod architecto omnis sapiente molestias iure quos eius voluptates beatae nihil.
-                lore
-              </td>
-            </tr>
-
-            <tr >
-              <td>Rohit Mishra</td>
-              <td>rohitmishra@gmail.com</td>
-              <td>Helldkjfhskjfshdfkjsdfhk dlfsldfjlkdjflkjfldslk dlfj ldfjlsfkj ljlkdsfjl uerhiuwhk dfjkjdkfhkhgiskj gfknskghisjggfkdfgbuhgiuhgho</td>
-            </tr>
-
-            <tr>
-              <td>Rohit Mohanlal Mishra dsfhfkjskdhiu</td>
-              <td>rohitlalmishra@gmail.com</td>
-              <td>Helldkjfhskjfshdfkjsdfhk dlfsldfjlkdjflkjfldslk dlfj ldfjlsfkj ljlkdsfjl uerhiuwhk dfjkjdkfhkhgiskj 
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit nihil rerum expedita exercitationem. Pariatur nobis architecto fugit provident. Quod architecto omnis sapiente molestias iure quos eius voluptates beatae nihil.
-                lore
-              </td>
-            </tr>
+              {
+                formData?.map((item)=>(
+                  <tr key={item._id}>
+                    <td>{item.name}</td>
+                    <td>{item.email}</td>
+                    <td>{item.feedback}</td>
+                  </tr>
+                ))
+              }
           </tbody>
         </table>
     </div>

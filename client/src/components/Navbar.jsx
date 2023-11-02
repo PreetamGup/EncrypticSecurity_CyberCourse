@@ -32,16 +32,12 @@ const Navbar = () => {
                 </li>
                 <li className='p-2 '>
                     <div className="dropdown">
-                        <button><NavLink to='course'>Courses</NavLink></button>
-                        {/* <div className="dropdown-content">
-                            <Link to={"course"}>Hacking</Link><br />
-                            <Link to={"course"}>Cyber Security</Link>
-                        </div> */}
+                        <button><NavLink to='/course'>Courses</NavLink></button>
                     </div>
                 </li>
-                <li className='p-2'><NavLink to='ourteam' >Our Team</NavLink></li>
-                <li className='p-2'><NavLink to='about'>About Us</NavLink></li>
-                <li className='p-2'><NavLink to='contact'>Contact Us</NavLink></li>
+                <li className='p-2'><NavLink to='/blogs' >Blogs</NavLink></li>
+                <li className='p-2'><NavLink to='/about'>About Us</NavLink></li>
+                <li className='p-2'><NavLink to='/contact'>Contact Us</NavLink></li>
             </ul>
         </div>
         

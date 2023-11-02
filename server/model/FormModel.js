@@ -19,7 +19,12 @@ const FormSchema= mongoose.Schema({
         enum:["Thane", "Andheri", "Ghatkopar"],
        
     },
-    feedback:String
+    feedback:String,
+    createdAt: { 
+        type: Date, 
+        default: Date.now
+    },
+
 })
 
 const FormModel= mongoose.model("Forms",FormSchema);

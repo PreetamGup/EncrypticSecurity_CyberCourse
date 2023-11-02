@@ -24,7 +24,7 @@ const Contact = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/feedbackform", formData);
+      const response = await axios.post(process.env.REACT_APP_API_V1+"/feedbackform", formData);
       
       if(response.data.success){
         setName("");
