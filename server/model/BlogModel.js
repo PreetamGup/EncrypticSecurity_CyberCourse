@@ -21,6 +21,11 @@ const BlogSchema= mongoose.Schema({
         required:[true, "Description Required"]
     },
 
+    imageLink:{
+        type:String,
+        required:[true, "imageLink Required"]
+    },
+
     content:{
         type:String,
         required:[true, "Blog Content is required"]

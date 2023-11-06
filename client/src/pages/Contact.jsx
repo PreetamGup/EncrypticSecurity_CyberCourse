@@ -54,6 +54,7 @@ const Contact = () => {
 
   return (
     <div className='contactUS container'>
+      
       <div className="contactLocation">
         <div>
           <div className='thaneContact'>

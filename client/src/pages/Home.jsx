@@ -165,7 +165,7 @@ const Home = () => {
               </div>
             </div>
             <div className="hotCourse">Hot</div>
-            <div class="featured fw-bold">FEATURED</div>
+            <div className="featured fw-bold">FEATURED</div>
           </div>
 
           <div className="courseCard">

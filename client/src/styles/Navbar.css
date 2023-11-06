@@ -1,5 +1,15 @@
+.navbar{
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 40px;
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+}
+
 .navigationDiv{
-    font-size:1.4vmax ;
+    font-size:1.2vmax ;
 }
 
 .navigationDiv li a{
@@ -44,16 +54,8 @@
     color: black;
 }
 
-.navbar{
-    gap: 8.5vmax;
-    position: sticky;
-    top: 0px;
-    z-index: 1000;
-}
 
-.navbar .loginMenu{
-    margin-left: 10vmax;
-}
+
 
 .navbar .loginMenu button{
     padding: 4px 10px;

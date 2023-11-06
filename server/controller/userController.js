@@ -18,36 +18,42 @@ export const loginController = async(req, res)=>{
         const user= await UserModel.findOne({email});
 
         if (!user){
-            return req.status(200).json({
+            return res.status(200).json({
                 message:"User not Exist",
                 success:false
             })
         }
+
+        
         
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-        return res.status(200).send({
+        return res.status(200).json({
             message: "Invalid Email or Password",
             success: false,
         });
         }
 
-        const accessToken = jwt.sign({ id: user._id, role:user.role }, process.env.ACCESS_JWT_SECRET, {
-            expiresIn: "1d",
+        user.password= undefined;
+
+        const accessToken = jwt.sign({ id: user._id, user  }, process.env.ACCESS_JWT_SECRET, {
+            expiresIn: "15d",
         });
 
         const refreshToken = jwt.sign({ id: user._id}, process.env.REFRESH_JWT_SECRET, {
-          expiresIn: "1y",
+          expiresIn: "30d",
       });
 
-        res.cookie("refresh-token", refreshToken, {
+      
+
+        res.cookie("refresh_token", refreshToken, {
           // maxAge:24 * 60 * 60 * 1000,
           httpOnly: true,
           sameSite: "none",
           secure: true,
         })
 
-        res.cookie("access-token", accessToken, {
+        res.cookie("access_token", accessToken, {
             // maxAge:24 * 60 * 60 * 1000,
             httpOnly: true,
             sameSite: "none",
@@ -55,6 +61,7 @@ export const loginController = async(req, res)=>{
           }).status(200).send({
             message: "Login Success",
             success: true,
+            accessToken,
         });
 
     } catch (error) {
@@ -86,16 +93,26 @@ export const registerController = async (req, res) => {
       await newUser.save();
       
       
-      res.status(201).send({
+      res.status(201).json({
         message: "Registered Successfully",
         success: true,
       });
 
     } catch (error) {
       console.log(error);
-      res.status(500).send({
+      res.status(500).json({
         success: false,
         message: `register Controller ${error.message}`,
       });
     }
   };
+
+
+
+export const logoutController = async (req, res)=>{
+  res.clearCookie("access_token");
+  res.clearCookie("refresh_token");
+
+  res.status(200).json({ message: "Successfully logged out", success:true });
+    
+}

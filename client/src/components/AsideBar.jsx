@@ -1,10 +1,17 @@
 import React from 'react'
 import "../styles/Layout2/AsideBar.css"
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const AsideBar = () => {
+  const role = useSelector((state)=> state.user.user.role)
+
   return (
     <aside className='asideBar'>
+
+      {
+        role==="Admin" 
+        ?
         <nav className='dashboardnavbar'>
            <NavLink to="home" 
                 className={({ isActive, isPending }) =>
@@ -36,6 +43,15 @@ const AsideBar = () => {
            </NavLink>
            
         </nav>
+
+        :
+        
+        <nav className='dashboardnavbar'>
+
+        </nav>
+
+      }
+        
     </aside>
   )
 }

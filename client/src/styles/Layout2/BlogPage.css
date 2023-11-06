@@ -5,22 +5,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:85%;
+    width:100%;
 }
-.BlogContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+.BlogContainer {
+    width: 80%;
     padding: 5px 40px;
+}
+
+.BlogContainer >div{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    
+
 }
 
 
 
 .BlogContainer button{
-  position: relative;
+    float:right
+  /* position: relative;
   right: -500px;
-    padding: 1px 10px;
+    padding: 1px 10px; */
 }
 
 .BlogPage button{
@@ -64,37 +70,71 @@
     outline:none;
 }
 
-.BlogForm form #blogTitle{
+.BlogForm form input {
     margin: 3px 5px;
     width: 45vw;
     height:4vh ;
     padding: 1px 5px;
 }
 
-.rdw-editor-main{
-    height: 75vh !important;
-    background-color: white;
-    padding: 2px 4px;
+.jodit-react-container{
     color: black;
-    margin-bottom: 10px;
-    /* width: 100%; */
+    width: 100% !important;
 }
 
-.toolbar-class{
-    color:black
-}
-
-.rdw-option-active{
-    border: 2px solid black !important;
-}
 
 
 
 /* Showing all blog  */
 
 .blogDiv{
-    border: 1px solid black;
-    padding: 10px ;
+    /* border: 1px solid black; */
+    border-radius: 20px;
+    /* padding: 10px ; */
     margin:20px 0px ;
-    width:80%;
+    /* width:80%; */
+    height: 28vmax;
+    width: 22vmax;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.326);
+
+
+}
+.blogDiv:hover{
+
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.blogDiv img{
+    /* width: 20%; */
+    border: none;
+    
+}
+
+.blogDiv .blogContentContainer{
+    /* width: 50%; */
+    padding: 10px;
+}
+
+
+
+@media screen and (max-width:426px) {
+    .BlogContainer {
+        width:100%;
+        padding: 5px 40px;
+    }
+
+    .blogDiv{
+       
+        height: 100%;
+        width: 100%;
+    
+    }
+
+    .blogPage{
+        margin: 20px !important;
+    }
 }

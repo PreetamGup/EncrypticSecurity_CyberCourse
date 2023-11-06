@@ -1,37 +1,58 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useMemo }   from "react";
 import "../../styles/Layout2/BlogPage.css"
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
+import JoditEditor from 'jodit-react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setBlog } from "../../redux/features/blogSlice";
+import { setLogin, setUser } from "../../redux/features/userSlice";
 
-const Blogs = () => {
-    const [editorState, setEditorState] = useState(EditorState.createEmpty());
+const Blogs = ({placeholder}) => {
+
     const [addNewBlog, setaddNewBlog]=useState(false);
     const [blogTitle, setblogTitle]=useState("");
     const [allBlogs , setallBlogs  ]=useState([]);
     const [description, setDescription]= useState("");
+    const [blogImageLink, setBlogImageLink]=useState("");
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const userName= useSelector((state)=> state.user.user.name)
 
+    const editor = useRef(null);
+	const [content, setContent] = useState('');
+
+
+  const configObj ={
+    readonly: false,
+    placeholder: placeholder || "Start typing..."
+  }
+	const config = useMemo(()=>
+    configObj
+		,
+		[placeholder]
+	);
+
+  console.log(content)
+   
     const handleSubmit=async(e)=>{
         e.preventDefault();
 
        try {
         const blogContent ={
           title:blogTitle,
-          createdBy:"Pritam",
-          content:draftToHtml(convertToRaw(editorState.getCurrentContent())),
-          description
+          createdBy:userName,
+          content,
+          description,
+          imageLink:blogImageLink
         }
 
-        const response = await axios.post(process.env.REACT_APP_API_V1+"/addblogform", blogContent);
+        const response = await axios.post(process.env.REACT_APP_API_V1+"/addblogform", blogContent, {withCredentials:true});
 
         if(response.data.success){
           setblogTitle("");
-          setEditorState(EditorState.createEmpty())
+          setContent("")
           setDescription("")
           toast.success(` ${response.data.message}`, {
             position: "top-center",
@@ -49,14 +70,19 @@ const Blogs = () => {
         }
 
        } catch (error) {
+        if(error.response.status ===400 || error.response.status === 401){
+          localStorage.clear();
+          dispatch(setLogin(false));
+          dispatch(setUser({}));
+          window.alert("Login Again")
+          
+          navigate("/")
+          
+        }
         console.warn(error);
        }
     }
     
-    const onEditorStateChange = (newEditorState) => {
-      setEditorState(newEditorState);
-     
-    };
 
     const fetchingBlog=async()=>{
       
@@ -75,6 +101,8 @@ const Blogs = () => {
 
     }
 
+  
+
 
     useEffect(()=>{
       fetchingBlog()
@@ -87,54 +115,102 @@ const Blogs = () => {
         !addNewBlog?
         <div className="BlogContainer">
             <h3 style={{textAlign:"center"}}>Blogs</h3>
-            <button onClick={()=>setaddNewBlog(!addNewBlog)}>Add New</button>
-            <div className="BlogContainer">
+            {window.location.pathname==="/blogs" ? "": <button onClick={()=>setaddNewBlog(!addNewBlog)}>Add New</button> }
+            
+            <div>
                 
                   {
                     allBlogs?.map((blog)=>(
-                      <div key={blog._id} className="blogDiv">
-                        <h3 className="blogtitle">{blog.title}</h3>
-                        <p>{blog.description}</p>
-                        <span style={{position:"relative", right:"5px"}}>By:- {blog.createdBy}</span>
+                      <div key={blog._id} className="blogDiv" onClick={()=>{dispatch(setBlog(blog)) ; navigate(`/blogs/${blog._id}`)}}>
+                        {/* <div className="blogImageContainer"> */}
+                          <img src={blog.imageLink} alt="" />
+                        {/* </div> */}
+                       <div className="blogContentContainer">
+                        <h4 className="blogtitle">{blog.title}</h4>
+                          <p>{`${blog.description.split(" ").slice(0,20).join(" ")}...`}</p>
+                          <span style={{}}>{`Date:- ${blog.createdAt.split('T')[0].split("-").reverse().join("-")}   By:- ${blog.createdBy}`} </span>
+                        </div>
                       </div>
                     ))
                   }
+
+                  
                 
            </div>
         </div>
         :
-        <div className='BlogForm'>
-            <form className="editForm"> 
-              <div>
-                <div className="divInput">
-                  <label htmlFor="blogTitle"><span>Title :-  </span><br />
-                    <input type="text" id="blogTitle" value={blogTitle} required onChange={(e)=>setblogTitle(e.target.value)}/>
-                  </label>
+        // <div className='BlogForm'>
+        //     <form className="editForm"> 
+        //       <div>
+        //         <div className="divInput">
+        //           <label htmlFor="blogTitle"><span>Title :-  </span><br />
+        //             <input type="text" id="blogTitle" value={blogTitle} required onChange={(e)=>setblogTitle(e.target.value)}/>
+        //           </label>
 
-                  <label htmlFor="blogDescription"> <span>Description :-  </span> <br />
+        //           <label htmlFor="blogDescription"> <span>Description :-  </span> <br />
+        //             <textarea name="blogDescription" id="blogDescription" cols="70" rows="5" required value={description} onChange={(e)=> setDescription(e.target.value)}></textarea>
+        //           </label>
+        //         </div>
+
+        //         <div>
+        //           <button onClick={handleSubmit} >Publish</button>
+        //           <button onClick={()=>setaddNewBlog(!addNewBlog)}>Close</button>
+        //         </div>
+
+        //       </div>
+                
+                
+        //        <div>
+        //         <Editor
+        //             editorState={editorState}
+        //             wrapperClassName="wrapper-class"
+        //             editorClassName="editor-class"
+        //             toolbarClassName="toolbar-class"
+        //             onEditorStateChange={onEditorStateChange}
+        //             />
+        //        </div>
+        //     </form>
+        //  </div>
+        <div className="BlogForm">
+
+          <form className="editForm"> 
+             <div>
+              <div className="divInput">
+                <label htmlFor="blogTitle"><span>Title :-  </span><br />
+                  <input type="text" id="blogTitle" value={blogTitle} required onChange={(e)=>setblogTitle(e.target.value)}/>
+                </label>
+
+                <label htmlFor="blogDescription"> <span>Description :-  </span> <br />
                     <textarea name="blogDescription" id="blogDescription" cols="70" rows="5" required value={description} onChange={(e)=> setDescription(e.target.value)}></textarea>
-                  </label>
-                </div>
+                </label>
+
+                <label htmlFor="blogImage"><span>Image Link :-  </span><br />
+                  <input type="text" id="blogImage" value={blogImageLink} required onChange={(e)=>setBlogImageLink(e.target.value)}/>
+                </label>
+               <br />
+              </div>
 
                 <div>
                   <button onClick={handleSubmit} >Publish</button>
                   <button onClick={()=>setaddNewBlog(!addNewBlog)}>Close</button>
                 </div>
 
-              </div>
-                
-                
-               <div>
-                <Editor
-                    editorState={editorState}
-                    wrapperClassName="wrapper-class"
-                    editorClassName="editor-class"
-                    toolbarClassName="toolbar-class"
-                    onEditorStateChange={onEditorStateChange}
-                    />
-               </div>
+            </div>
+
+           
             </form>
-         </div>
+            <>
+              <JoditEditor
+                ref={editor}
+                value={content}
+                config={config}
+                tabIndex={1} // tabIndex of textarea
+                onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                // onChange={newContent =>setContent(newContent)}
+              />
+            </>
+        </div>
+
     }
       <ToastContainer />
     </div>

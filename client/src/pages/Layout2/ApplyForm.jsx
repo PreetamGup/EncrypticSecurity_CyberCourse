@@ -1,15 +1,20 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios';
 import "../../styles/Layout2/FeedbackForm.css"
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLogin, setUser } from '../../redux/features/userSlice';
 
 const ApplyForm = () => {
     
   const [formData, setFormData]= useState([]);
+  const navigate= useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange=async(e,id)=>{
 
     try {
-        const response= await axios.patch(process.env.REACT_APP_API_V1+`/formUpdate/${id}?isRead=${e.target.checked}`);
+        const response= await axios.patch(process.env.REACT_APP_API_V1+`/formUpdate/${id}?isRead=${e.target.checked}`, {},{withCredentials:true});
         if(response.statusText!=="OK"){
             console.warn(response.data)
         }
@@ -21,10 +26,18 @@ const ApplyForm = () => {
   const fetchForm=async()=>{
     
     try {
-      const allform = await axios.get(process.env.REACT_APP_API_V1+'/applyform');
+      const allform = await axios.get(process.env.REACT_APP_API_V1+'/applyform', {withCredentials:true});
       setFormData(allform.data);
 
     } catch (error) {
+      if(error.response.status ===400 || error.response.status === 401){
+        localStorage.clear();
+        dispatch(setLogin(false));
+        dispatch(setUser({}));
+        window.alert("Login Again")
+        navigate("/")
+        
+      }
       console.warn(error)
     }
     
@@ -38,7 +51,7 @@ const ApplyForm = () => {
   },[])
   return (
     <div className='FeedbackForm' style={{}}>
-        <h3>Feedback Forms</h3>
+        <h3>Applied Forms</h3>
         <table>
           <thead>
             <tr>
@@ -57,10 +70,12 @@ const ApplyForm = () => {
                     <td>{item.phoneNumber}</td>
                     <td>{item.branch}</td>
                     <td>{item.createdAt.split('T')[0].split("-").reverse().join("-")}</td>
-                    <td><input type='checkbox' defaultChecked={item.isRead} onChange={(e)=>handleChange(e,item._id)}/></td>
+                    <td><input id={`appliedCheckbox${item._id}`} name='appliedCheck' type='checkbox' defaultChecked={item.isRead} onChange={(e)=>handleChange(e,item._id)}/></td>
                   </tr>
                 ))
               }
+
+              
           </tbody>
         </table>
     </div>
