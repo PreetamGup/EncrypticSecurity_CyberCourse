@@ -91,7 +91,7 @@ const Blogs = ({placeholder}) => {
     const fetchingBlog=async()=>{
       
       try {
-        dispatch(setLoading(false))
+        dispatch(setLoading(true))
         const response = await axios.get(process.env.REACT_APP_API_V1+"/getblogs");
         dispatch(setLoading(false))
       

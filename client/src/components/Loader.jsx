@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div className="d-flex justify-content-center align-items-center" style={{height:"300px"}}>
         <div className="spinner-border" style={{width:"70px", height:"70px"}} role="status">
-            <span className="sr-only"></span>
+            <span className="sr-only"> </span>
         </div>
     </div>
   )
