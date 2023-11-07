@@ -7,7 +7,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setBlog } from "../../redux/features/blogSlice";
-import { setLogin, setUser } from "../../redux/features/userSlice";
+import { setLogin, setUser,setLoading } from "../../redux/features/userSlice";
+import Loader from "../../components/Loader";
 
 const Blogs = ({placeholder}) => {
 
@@ -19,6 +20,7 @@ const Blogs = ({placeholder}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const userName= useSelector((state)=> state.user.user.name)
+    const loading= useSelector((state)=>state.user.loading)
 
     const editor = useRef(null);
 	const [content, setContent] = useState('');
@@ -34,7 +36,7 @@ const Blogs = ({placeholder}) => {
 		[placeholder]
 	);
 
-  console.log(content)
+  console.log(loading)
    
     const handleSubmit=async(e)=>{
         e.preventDefault();
@@ -48,8 +50,10 @@ const Blogs = ({placeholder}) => {
           imageLink:blogImageLink
         }
 
+        dispatch(setLoading(true))
         const response = await axios.post(process.env.REACT_APP_API_V1+"/addblogform", blogContent, {withCredentials:true});
 
+        dispatch(setLoading(false))
         if(response.data.success){
           setblogTitle("");
           setContent("")
@@ -87,7 +91,9 @@ const Blogs = ({placeholder}) => {
     const fetchingBlog=async()=>{
       
       try {
+        dispatch(setLoading(false))
         const response = await axios.get(process.env.REACT_APP_API_V1+"/getblogs");
+        dispatch(setLoading(false))
       
         if(response.data.success){
           setallBlogs(response.data.allBlogs)
@@ -117,60 +123,31 @@ const Blogs = ({placeholder}) => {
             <h3 style={{textAlign:"center"}}>Blogs</h3>
             {window.location.pathname==="/blogs" ? "": <button onClick={()=>setaddNewBlog(!addNewBlog)}>Add New</button> }
             
+           {
+            loading?
+            <Loader/>
+            :
             <div>
                 
-                  {
-                    allBlogs?.map((blog)=>(
-                      <div key={blog._id} className="blogDiv" onClick={()=>{dispatch(setBlog(blog)) ; navigate(`/blogs/${blog._id}`)}}>
-                        {/* <div className="blogImageContainer"> */}
-                          <img src={blog.imageLink} alt="" />
-                        {/* </div> */}
-                       <div className="blogContentContainer">
-                        <h4 className="blogtitle">{blog.title}</h4>
-                          <p>{`${blog.description.split(" ").slice(0,20).join(" ")}...`}</p>
-                          <span style={{}}>{`Date:- ${blog.createdAt.split('T')[0].split("-").reverse().join("-")}   By:- ${blog.createdBy}`} </span>
-                        </div>
-                      </div>
-                    ))
-                  }
-
-                  
-                
-           </div>
+            {
+              allBlogs?.map((blog)=>(
+                <div key={blog._id} className="blogDiv" onClick={()=>{dispatch(setBlog(blog)) ; navigate(`/blogs/${blog._id}`)}}>
+                  {/* <div className="blogImageContainer"> */}
+                    <img src={blog.imageLink} alt="" />
+                  {/* </div> */}
+                 <div className="blogContentContainer">
+                  <h4 className="blogtitle">{blog.title}</h4>
+                    <p>{`${blog.description.split(" ").slice(0,20).join(" ")}...`}</p>
+                    <span style={{}}>{`Date:- ${blog.createdAt.split('T')[0].split("-").reverse().join("-")}   By:- ${blog.createdBy}`} </span>
+                  </div>
+                </div>
+              ))
+            }     
+     </div>
+           }
         </div>
         :
-        // <div className='BlogForm'>
-        //     <form className="editForm"> 
-        //       <div>
-        //         <div className="divInput">
-        //           <label htmlFor="blogTitle"><span>Title :-  </span><br />
-        //             <input type="text" id="blogTitle" value={blogTitle} required onChange={(e)=>setblogTitle(e.target.value)}/>
-        //           </label>
-
-        //           <label htmlFor="blogDescription"> <span>Description :-  </span> <br />
-        //             <textarea name="blogDescription" id="blogDescription" cols="70" rows="5" required value={description} onChange={(e)=> setDescription(e.target.value)}></textarea>
-        //           </label>
-        //         </div>
-
-        //         <div>
-        //           <button onClick={handleSubmit} >Publish</button>
-        //           <button onClick={()=>setaddNewBlog(!addNewBlog)}>Close</button>
-        //         </div>
-
-        //       </div>
-                
-                
-        //        <div>
-        //         <Editor
-        //             editorState={editorState}
-        //             wrapperClassName="wrapper-class"
-        //             editorClassName="editor-class"
-        //             toolbarClassName="toolbar-class"
-        //             onEditorStateChange={onEditorStateChange}
-        //             />
-        //        </div>
-        //     </form>
-        //  </div>
+       
         <div className="BlogForm">
 
           <form className="editForm"> 
