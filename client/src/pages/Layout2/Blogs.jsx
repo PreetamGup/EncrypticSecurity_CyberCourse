@@ -137,7 +137,7 @@ const Blogs = ({placeholder}) => {
                   {/* </div> */}
                  <div className="blogContentContainer">
                   <h4 className="blogtitle">{blog.title}</h4>
-                    <p>{`${blog.description.split(" ").slice(0,20).join(" ")}...`}</p>
+                    <p>{`${blog.description.split(" ").slice(0,15).join(" ")}...`}</p>
                     <span style={{}}>{`Date:- ${blog.createdAt.split('T')[0].split("-").reverse().join("-")}   By:- ${blog.createdBy}`} </span>
                   </div>
                 </div>
