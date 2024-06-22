@@ -121,7 +121,7 @@ const Blogs = ({placeholder}) => {
         !addNewBlog?
         <div className="BlogContainer">
             <h3 style={{textAlign:"center"}}>Blogs</h3>
-            {window.location.pathname==="/blogs" ? "": <button onClick={()=>setaddNewBlog(!addNewBlog)}>Add New</button> }
+            {window.location.pathname==="/blogs" ? "": <button className="blogAddBtn" onClick={()=>setaddNewBlog(!addNewBlog)}>Add New</button> }
             
            {
             loading?
@@ -133,7 +133,7 @@ const Blogs = ({placeholder}) => {
               allBlogs?.map((blog)=>(
                 <div key={blog._id} className="blogDiv" onClick={()=>{dispatch(setBlog(blog)) ; navigate(`/blogs/${blog._id}`)}}>
                   {/* <div className="blogImageContainer"> */}
-                    <img src={blog.imageLink} alt="" />
+                    <img src={blog.imageLink} alt="Blog Image" loading="lazy"/>
                   {/* </div> */}
                  <div className="blogContentContainer">
                   <h4 className="blogtitle">{blog.title}</h4>
@@ -143,7 +143,7 @@ const Blogs = ({placeholder}) => {
                 </div>
               ))
             }     
-     </div>
+          </div>
            }
         </div>
         :

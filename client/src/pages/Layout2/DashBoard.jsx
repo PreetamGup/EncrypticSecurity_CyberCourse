@@ -7,7 +7,7 @@ const DashBoard = () => {
  
   return (
     <div style={{}}>
-       <h1>Dashboard</h1>
+       <h1 style={{textAlign:"center"}}>Dashboard</h1>
     </div>
   )
 }

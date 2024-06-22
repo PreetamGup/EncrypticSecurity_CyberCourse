@@ -1,0 +1,56 @@
+.coursePage{
+    padding: 40px 50px;
+    
+}
+
+.coursePage .courseTopics  {
+    display: none;
+}
+.courseTopicShow{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.116);
+    padding-top: 20px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+
+}
+.courseNames{
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px ;
+    width: 50vw;
+    background-color: rgba(255, 255, 255, 0.105);
+    cursor:pointer;
+    
+}
+
+.courseList{
+    list-style: none;
+    border-radius: 5px;
+    font-size: large;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.105);
+   font-weight: 500;
+}
+
+
+
+@media screen and (max-width:426px) {
+    .courseNames{
+        width: 80vw;
+    }
+    .courseTopicShow{
+        width: 80vw;
+        font-size: small;
+    }
+    .courseList{
+        font-weight: 400;
+        font-size:small
+    }
+    .extraDetails{
+        width: 85%;
+    }
+}
